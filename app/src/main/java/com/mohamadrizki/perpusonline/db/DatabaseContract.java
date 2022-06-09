@@ -8,11 +8,11 @@ public class DatabaseContract {
     static String USER_TABLE_NAME = "users";
     static String REQUEST_TABLE_NAME = "requests";
 
-    static final class BookColumns implements BaseColumns {
-        static String NAME = "name";
-        static String AUTHOR = "author";
-        static String COVER = "cover";
-        static String SYNOPSIS = "synopsis";
+    public static final class BookColumns implements BaseColumns {
+        public static String NAME = "name";
+        public static String AUTHOR = "author";
+        public static String COVER = "cover";
+        public static String SYNOPSIS = "synopsis";
     }
 
     static final class UserColumns implements BaseColumns {
@@ -25,7 +25,7 @@ public class DatabaseContract {
 
     static final class RequestColumns implements BaseColumns {
         static String BOOK_ID = "book_id";
-        static String REQUESTER_ID = "book_id";
+        static String REQUESTER_ID = "requester_id";
         static String RECEIVER_ID = "receiver_id";
         static String LATITUDE = "latitude";
         static String LONGITUDE = "longitude";

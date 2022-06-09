@@ -104,10 +104,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private String insert(Book book){
         return String.format("INSERT INTO books(name, author, cover, synopsis) " +
-                "VALUES (%s, %s, %s, %s);",
-                book.getName(),
+                        "VALUES ('%s', '%s', '%s', '%s');",
+                book.getName().replace("'", "''"),
                 book.getAuthor(),
                 book.getCover(),
-                book.getSynopsis());
+                book.getSynopsis().replace("'", "''"));
     }
 }

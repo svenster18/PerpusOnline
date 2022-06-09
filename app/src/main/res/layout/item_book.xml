@@ -18,10 +18,10 @@
         android:padding="8dp">
         <ImageView
             android:id="@+id/img_item_photo"
-            android:layout_width="150dp"
-            android:layout_height="220dp"
+            android:layout_width="132dp"
+            android:layout_height="200dp"
             android:layout_marginBottom="4dp"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
             tools:src="@tools:sample/backgrounds/scenic"
             android:contentDescription="@string/book_cover" />
         <TextView
