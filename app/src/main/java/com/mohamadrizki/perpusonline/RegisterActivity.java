@@ -74,25 +74,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             int year = Integer.parseInt(date.substring(date.length() - 4));
             Log.d("RegisterActivity", String.valueOf(now));
 
-            if (TextUtils.isEmpty(email)) {
-                edEmail.setError(FIELD_REQUIRED);
-                return;
-            }
-
-            if (!isValidEmail(email)) {
-                edEmail.setError(FIELD_IS_NOT_VALID);
-                return;
-            }
-
-            if (TextUtils.isEmpty(phoneNo)) {
-                edPhoneNumber.setError(FIELD_REQUIRED);
-                return;
-            }
-
-            if(date.equals("Date Of Birth")){
-                tvDateOfBirth.setError("Date Of Birth Can't Be Empty");
-            }
-
+            if(email.isEmpty() || password.isEmpty() || phoneNo.isEmpty() || date.equals("Date Of Birth")) Toast.makeText(this, "All fields must be filled", Toast.LENGTH_SHORT).show();
             if(password.length() < 8) Toast.makeText(this, "Password must be more than 8 characters", Toast.LENGTH_SHORT).show();
             else if(!phoneNo.startsWith("+62")) Toast.makeText(this, "phone number must starts with “+62”", Toast.LENGTH_SHORT).show();
             else if(phoneNo.length() < 10 || phoneNo.length() > 15) Toast.makeText(this, "Phone number must be between 10 and 15 digits", Toast.LENGTH_SHORT).show();
