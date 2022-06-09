@@ -38,11 +38,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     " %s TEXT NOT NULL," +
                     " %s TEXT NOT NULL," +
                     " %s TEXT NOT NULL," +
-                    " %s TEXT NOT NULL," +
                     " %s TEXT NOT NULL)",
             DatabaseContract.USER_TABLE_NAME,
             DatabaseContract.UserColumns._ID,
-            DatabaseContract.UserColumns.NAME,
             DatabaseContract.UserColumns.EMAIL,
             DatabaseContract.UserColumns.PASSWORD,
             DatabaseContract.UserColumns.PHONE_NUMBER,

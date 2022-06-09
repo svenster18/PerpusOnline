@@ -4,6 +4,7 @@ import android.database.Cursor;
 
 import com.mohamadrizki.perpusonline.db.DatabaseContract;
 import com.mohamadrizki.perpusonline.model.Book;
+import com.mohamadrizki.perpusonline.model.User;
 
 import java.util.ArrayList;
 
@@ -21,5 +22,19 @@ public class MappingHelper {
         }
 
         return booksList;
+    }
+
+    public static User mapCursorToObject(Cursor userCursor) {
+        User user = null;
+        if (userCursor.moveToNext()) {
+            int id = userCursor.getInt(userCursor.getColumnIndexOrThrow(DatabaseContract.UserColumns._ID));
+            String email = userCursor.getString(userCursor.getColumnIndexOrThrow(DatabaseContract.UserColumns.EMAIL));
+            String password = userCursor.getString(userCursor.getColumnIndexOrThrow(DatabaseContract.UserColumns.PASSWORD));
+            String phoneNumber = userCursor.getString(userCursor.getColumnIndexOrThrow(DatabaseContract.UserColumns.PHONE_NUMBER));
+            String dateOfBirth = userCursor.getString(userCursor.getColumnIndexOrThrow(DatabaseContract.UserColumns.DATE_OF_BIRTH));
+            user = new User(id, email, password, phoneNumber, dateOfBirth);
+        }
+
+        return user;
     }
 }

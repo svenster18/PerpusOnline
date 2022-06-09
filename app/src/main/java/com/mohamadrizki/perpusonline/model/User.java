@@ -1,20 +1,23 @@
 package com.mohamadrizki.perpusonline.model;
 
-import java.util.Date;
-
 public class User {
     private int id;
     private String email;
     private String password;
     private String phoneNumber;
-    private Date dateOfBirth;
+    private String dateOfBirth;
+    private boolean isLoggedIn = false;
 
-    public User(int id, String email, String password, String phoneNumber, Date dateOfBirth) {
+    public User(int id, String email, String password, String phoneNumber, String dateOfBirth) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public User() {
+
     }
 
     public int getId() {
@@ -49,11 +52,19 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public boolean isLoggedIn() {
+        return isLoggedIn;
+    }
+
+    public void setLoggedIn(boolean loggedIn) {
+        isLoggedIn = loggedIn;
     }
 }

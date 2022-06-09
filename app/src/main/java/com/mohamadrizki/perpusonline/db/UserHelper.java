@@ -42,16 +42,16 @@ public class UserHelper {
             database.close();
     }
 
-    public Cursor queryByEmailAndPassword(String email) {
+    public Cursor queryByEmail(String email) {
         return database.query(
                 DATABASE_TABLE,
-                new String[]{PASSWORD},
+                null,
                 EMAIL + " = ? ",
                 new String[]{email},
                 null,
                 null,
                 null,
-                "LIMIT 1");
+                "1");
     }
 
     public long insert(ContentValues values) {

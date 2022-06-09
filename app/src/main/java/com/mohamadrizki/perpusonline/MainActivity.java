@@ -6,10 +6,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +22,7 @@ import com.mohamadrizki.perpusonline.adapter.BookAdapter;
 import com.mohamadrizki.perpusonline.db.BookHelper;
 import com.mohamadrizki.perpusonline.helper.MappingHelper;
 import com.mohamadrizki.perpusonline.model.Book;
+import com.mohamadrizki.perpusonline.model.User;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -32,14 +35,21 @@ public class MainActivity extends AppCompatActivity implements LoadBooksCallback
     private RecyclerView rvBooks;
     private BookAdapter adapter;
     private static final String EXTRA_STATE = "EXTRA_STATE";
-    private boolean isLoggedIn = true;
+
+    private UserPreference userPreference;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if(!isLoggedIn) {
+        userPreference = new UserPreference(this);
+        user = userPreference.getUser();
+
+        if(!user.isLoggedIn()) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
             finish();
         }
 
@@ -130,7 +140,10 @@ public class MainActivity extends AppCompatActivity implements LoadBooksCallback
         if (id == R.id.action_view_all_request) {
 
         } else if (id == R.id.action_logout) {
-            isLoggedIn = false;
+            user.setLoggedIn(false);
+            userPreference.setUser(user);
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
             finish();
         }
         return super.onOptionsItemSelected(item);
